@@ -1,7 +1,10 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
+import 'package:get/get.dart';
+import 'package:safetyapp_1/pages/signup_page.dart';
 
 class LogingPage extends StatefulWidget {
-
   @override
   _LogingPageState createState() => _LogingPageState();
 }
@@ -23,7 +26,7 @@ class _LogingPageState extends State<LogingPage> {
                 image: AssetImage(
                   "assests/images/loginimg.png"
                 ),
-                fit: BoxFit.scaleDown
+                fit: BoxFit.cover
               ),
             ),
           ),
@@ -61,6 +64,8 @@ class _LogingPageState extends State<LogingPage> {
                   ),
                   child: TextField(
                     decoration: InputDecoration(
+                      hintText: "Email",
+                      prefixIcon: const Icon(Icons.email, color:Colors.deepOrangeAccent),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
                         borderSide: BorderSide(
@@ -98,6 +103,8 @@ class _LogingPageState extends State<LogingPage> {
                   ),
                   child: TextField(
                     decoration: InputDecoration(
+                      hintText: "Password",
+                      prefixIcon: const Icon(Icons.password, color:Colors.deepOrangeAccent),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
                           borderSide: BorderSide(
@@ -174,13 +181,12 @@ class _LogingPageState extends State<LogingPage> {
                 color: Colors.black,
                 fontSize: 20,
                 fontWeight: FontWeight.bold
-              )
+              ),
+                recognizer: TapGestureRecognizer()..onTap=()=>Get.to(()=>const SignUpPage())
               )
             ]
           )
           )
-
-
         ],
       ),
     );
