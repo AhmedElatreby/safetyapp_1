@@ -5,6 +5,12 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    List images =[
+      "g.png",
+      "t.png",
+      "f.png",
+    ];
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
@@ -60,7 +66,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                   child: TextField(
                     decoration: InputDecoration(
-                      hintText: "Your email id",
+                      hintText: "Email",
                       prefixIcon: const Icon(Icons.email, color:Colors.deepOrangeAccent),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
@@ -99,6 +105,9 @@ class SignUpPage extends StatelessWidget {
                   ),
                   child: TextField(
                     decoration: InputDecoration(
+                      hintText: "Password",
+                      prefixIcon: const Icon(Icons.password_outlined, color:Colors.deepOrangeAccent),
+
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
                           borderSide: const BorderSide(
@@ -120,7 +129,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height:20),
+                const SizedBox(height:50),
                 // Row(
                 //   children: [
                 //     Expanded(child: Container(),),
@@ -162,24 +171,30 @@ class SignUpPage extends StatelessWidget {
             ),
 
           ),
-          SizedBox(height: width*0.1,),
-          RichText(text: const TextSpan(text:"Don\'t have an account?",
+          SizedBox(height: width*0.2,),
+          RichText(text: const TextSpan(text:"Sign up using one of the following methods",
               style: TextStyle(
                 color: Colors.grey,
-                fontSize: 20,
+                fontSize: 16,
               ),
-              children: [
-                const TextSpan(
-                    text:"  Create",
-                    style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold
-                    )
-                )
-              ]
-          )
-          )
+          ),),
+          Wrap(
+            children: List<Widget>.generate(3, (index) {
+              return Padding(
+                padding: const EdgeInsets.all(8),
+                child: CircleAvatar(
+                  radius: 30,
+                  backgroundColor: Colors.white38,
+                  child: CircleAvatar(
+                    radius: 25,
+                      backgroundImage: AssetImage(
+                        "assests/images/"+images[index]
+                      ),
+                  ),
+                ),
+              );
+            }),
+          ),
         ],
       ),
     );
